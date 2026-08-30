@@ -1,0 +1,569 @@
+<!-- ============================================================
+pages/wechat.html —— 公众号
+看板风格 · 去AI化 · HXTCC hover横向展开全称 · GSAP淡入
+============================================================ -->
+
+<div class="notice-board" id="wechatBoard">
+    <div class="board-inner">
+
+        <!-- ===== 看板顶部 ===== -->
+        <div class="board-header" data-animate>
+            <div class="board-avatar">
+                <img src="images/wechat_avatar.jpg" alt="HXTCC 公众号头像" />
+            </div>
+            <div class="board-title">
+                <div class="brand-wrapper" id="brandWrapper">
+                    <span class="brand-abbr">HXTCC</span>
+                    <span class="brand-full">
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial">H</span><span class="brand-full-rest">ua</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial">X</span><span class="brand-full-rest">i</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial">T</span><span class="brand-full-rest">echnology</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial">C</span><span class="brand-full-rest">omprehensive</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial">A</span><span class="brand-full-rest">pplication</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial">R</span><span class="brand-full-rest">esearch</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial">C</span><span class="brand-full-rest">enter</span>
+                        </span>
+                    </span>
+                </div>
+                <div class="board-sub">华西综合科技运用与研究中心 · 官方公众号</div>
+                <div class="board-sub-en">Hua Xi Comprehensive Technology Application and Research Center</div>
+            </div>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 简介 ===== -->
+        <div class="board-intro" data-animate>
+            <p><strong>HXTCC</strong> 是华西综合科技运用与研究中心的官方公众号。</p>
+            <p>我们致力于技术实践与知识分享，内容涵盖：</p>
+            <ul>
+                <li>全栈开发 · JavaScript/TypeScript/Java</li>
+                <li>网络安全 · 渗透测试/Kali Linux</li>
+                <li>音视频工程 · 剪辑/调音/音乐创作</li>
+                <li>硬件安全 · USB/CAN总线/IoT</li>
+                <li>设计创作 · 3D建模/美术/写作</li>
+            </ul>
+            <p>目前已发布开源项目「银狐猎手」浏览器安全扩展，更多技术文章与项目成果正在持续整理中。</p>
+            <p class="intro-end">—— 关注我们，一起探索技术的边界。</p>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 现有成果 ===== -->
+        <div class="board-projects" data-animate>
+            <div class="projects-label">📌 现有成果</div>
+            <div class="project-card">
+                <span class="project-name">银狐猎手 · 浏览器安全扩展</span>
+                <a href="https://github.com/hxtecc/fox-hunter" target="_blank" class="project-link">github.com/hxtecc/fox-hunter</a>
+                <span class="project-badge">开源</span>
+            </div>
+            <div class="project-more">更多内容，正在开发中，敬请期待…</div>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 二维码 ===== -->
+        <div class="board-qr" data-animate>
+            <div class="qr-block">
+                <img src="images/qrcode.jpg" alt="HXTCC 公众号二维码" />
+            </div>
+            <div class="qr-caption">
+                <span class="qr-main">长按识别二维码 · 关注 HXTCC</span>
+                <span class="qr-sub">获取最新技术文章与项目动态</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ============================================================
+样式
+============================================================ -->
+<style>
+    /* ===== 看板外层 ===== */
+    .notice-board {
+        background: rgba(245, 240, 233, 0.5);
+        backdrop-filter: blur(4px);
+        border-radius: 16px;
+        padding: 20px 24px 24px 24px;
+        border: 1px solid rgba(200, 190, 180, 0.3);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .board-inner {
+        background: rgba(255, 252, 248, 0.7);
+        border-radius: 12px;
+        padding: 24px 28px;
+        border: 1px solid rgba(200, 190, 180, 0.15);
+    }
+
+    /* 动画初始状态 */
+    .board-header,
+    .board-intro,
+    .board-projects,
+    .board-qr {
+        opacity: 0;
+        transform: translateY(24px);
+        will-change: opacity, transform;
+    }
+
+    /* ===== 看板头部 ===== */
+    .board-header {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .board-avatar {
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid rgba(168, 135, 74, 0.15);
+        background: rgba(200, 190, 180, 0.1);
+    }
+
+    .board-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .board-title {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .board-sub {
+        font-size: 14px;
+        color: #666;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+    }
+
+    .board-sub-en {
+        font-size: 12px;
+        color: #999;
+        letter-spacing: 0.3px;
+        margin-top: 2px;
+        font-style: italic;
+    }
+
+    /* ===== 品牌标识 hover 横向展开 ===== */
+    .brand-wrapper {
+        display: inline-block;
+        cursor: default;
+        position: relative;
+        line-height: 1.2;
+    }
+
+    .brand-abbr {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: 3px;
+        display: inline-block;
+        transition: opacity 0.25s ease;
+    }
+
+    .brand-full {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        gap: 2px 4px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        font-size: 28px;
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: 2px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .brand-full-item {
+        display: inline-flex;
+        align-items: baseline;
+    }
+
+    .brand-full-initial {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .brand-full-rest {
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        color: #555;
+        margin-left: 1px;
+    }
+
+    .brand-wrapper:hover .brand-abbr {
+        opacity: 0;
+    }
+
+    .brand-wrapper:hover .brand-full {
+        opacity: 1;
+    }
+
+    /* ===== 分割线 ===== */
+    .board-divider {
+        text-align: center;
+        color: rgba(168, 135, 74, 0.25);
+        font-size: 12px;
+        letter-spacing: 4px;
+        padding: 12px 0 10px 0;
+        user-select: none;
+        font-family: 'Times New Roman', serif;
+    }
+
+    /* ===== 简介 ===== */
+    .board-intro {
+        font-size: 14px;
+        line-height: 1.9;
+        color: #2a2a2a;
+        padding: 0 0 2px 0;
+    }
+
+    .board-intro p {
+        margin-bottom: 6px;
+    }
+
+    .board-intro ul {
+        margin: 6px 0 10px 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .board-intro ul li {
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .board-intro ul li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: #a8874a;
+        opacity: 0.5;
+    }
+
+    .intro-end {
+        color: #a8874a;
+        font-weight: 500;
+        margin-top: 6px;
+        letter-spacing: 0.5px;
+    }
+
+    /* ===== 现有成果 ===== */
+    .board-projects {
+        padding: 0 0 2px 0;
+    }
+
+    .projects-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #a8874a;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    .project-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 10px 14px;
+        background: rgba(200, 190, 180, 0.08);
+        border: 1px solid rgba(200, 190, 180, 0.15);
+        border-radius: 6px;
+    }
+
+    .project-name {
+        font-size: 14px;
+        font-weight: 500;
+        color: #1a1a1a;
+    }
+
+    .project-link {
+        color: #1a1a1a;
+        text-decoration: none;
+        font-size: 13px;
+        transition: color 0.15s ease;
+        word-break: break-all;
+    }
+
+    .project-link:hover {
+        color: #a8874a;
+        text-decoration: underline;
+    }
+
+    .project-badge {
+        font-size: 11px;
+        color: #fff;
+        background: #a8874a;
+        padding: 0 12px;
+        border-radius: 10px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        flex-shrink: 0;
+        line-height: 20px;
+    }
+
+    .project-more {
+        margin-top: 10px;
+        font-size: 13px;
+        color: #999;
+    }
+
+    /* ===== 二维码 ===== */
+    .board-qr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        padding: 8px 0 0 0;
+        flex-wrap: wrap;
+    }
+
+    .qr-block {
+        flex-shrink: 0;
+        width: 140px;
+        height: 140px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 2px solid rgba(168, 135, 74, 0.12);
+        background: #fff;
+        padding: 6px;
+        transition: transform 0.2s ease;
+    }
+
+    .qr-block:hover {
+        transform: scale(1.02);
+    }
+
+    .qr-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .qr-caption {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .qr-main {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1a1a1a;
+        letter-spacing: 0.5px;
+    }
+
+    .qr-sub {
+        font-size: 13px;
+        color: #888;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 600px) {
+        .brand-full {
+            font-size: 18px;
+            letter-spacing: 1px;
+            gap: 1px 2px;
+        }
+
+        .brand-full-initial {
+            font-size: 18px;
+        }
+
+        .brand-full-rest {
+            font-size: 10px;
+        }
+
+        .brand-abbr {
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .board-avatar {
+            width: 48px;
+            height: 48px;
+        }
+
+        .board-header {
+            gap: 12px;
+        }
+
+        .board-sub {
+            font-size: 12px;
+        }
+
+        .board-sub-en {
+            font-size: 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .notice-board {
+            padding: 12px 14px;
+        }
+
+        .board-inner {
+            padding: 18px 16px;
+        }
+
+        .board-avatar {
+            width: 52px;
+            height: 52px;
+        }
+
+        .brand-abbr {
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        .brand-full {
+            font-size: 20px;
+            letter-spacing: 1.5px;
+            gap: 1px 2px;
+        }
+
+        .brand-full-initial {
+            font-size: 20px;
+        }
+
+        .brand-full-rest {
+            font-size: 11px;
+        }
+
+        .board-sub {
+            font-size: 13px;
+        }
+
+        .board-sub-en {
+            font-size: 11px;
+        }
+
+        .board-intro {
+            font-size: 13px;
+        }
+
+        .board-intro ul li {
+            font-size: 13px;
+        }
+
+        .project-card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .qr-block {
+            width: 120px;
+            height: 120px;
+        }
+
+        .qr-main {
+            font-size: 14px;
+        }
+
+        .board-qr {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .qr-caption {
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .board-qr {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .qr-caption {
+            align-items: center;
+            text-align: center;
+        }
+    }
+</style>
+
+
+<!-- ============================================================
+GSAP 淡入动画
+============================================================ -->
+<script>
+    (function() {
+        function initAnimation() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                setTimeout(initAnimation, 200);
+                return;
+            }
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            var elements = document.querySelectorAll('#wechatBoard [data-animate]');
+            if (!elements.length) return;
+
+            gsap.set(elements, { opacity: 0, y: 24 });
+
+            elements.forEach(function(el, index) {
+                gsap.to(el, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    delay: index * 0.12,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 92%',
+                        toggleActions: 'play none none none',
+                        once: true
+                    }
+                });
+            });
+
+            ScrollTrigger.refresh();
+        }
+
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            initAnimation();
+        } else {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(initAnimation, 300);
+            });
+        }
+    })();
+</script>

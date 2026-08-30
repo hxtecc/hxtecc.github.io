@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>华西综合科技运用与研究中心</title>
+
+    <!-- ===== 外置库：GSAP + ScrollTrigger ===== -->
+    <script src="lib/gsap.min.js"></script>
+    <script src="lib/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* ===== 全部样式保持不变 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Times New Roman', '宋体', '华文楷体', 'Microsoft YaHei', serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            background-image: url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #d9d0c4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(247, 245, 240, 0.78);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .top-bar .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .top-bar .brand .logo {
+            height: 48px;
+            width: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .top-bar .brand .title-group .main-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.3);
+        }
+        .top-bar .brand .title-group .sub-title {
+            font-size: 12px;
+            color: #555;
+            letter-spacing: 2px;
+            font-style: italic;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.2);
+        }
+        .top-bar .countdown {
+            font-size: 14px;
+            color: #a8874a;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 6px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(168, 135, 74, 0.15);
+            font-family: 'Consolas', monospace;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        .top-placeholder {
+            height: 126px;
+        }
+
+        .nav-bar {
+            position: sticky;
+            top: 72px;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 52px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border-radius: 12px;
+            margin: 0 20px;
+            max-width: 1160px;
+        }
+        .nav-bar .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-bar .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .nav-bar .nav-links a:hover,
+        .nav-bar .nav-links a.active {
+            color: #a8874a;
+            border-bottom-color: #a8874a;
+        }
+
+        .content-area {
+            padding: 10px 0 20px 0;
+            flex: 1;
+        }
+        .content-area .loading-placeholder {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(50, 50, 50, 0.4);
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* ===== 轮播图样式（brand.html 内使用） ===== */
+        .carousel-section {
+            margin: 20px auto 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(2px);
+            position: relative;
+            width: 100%;
+            max-width: 1160px;
+            cursor: pointer;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s ease;
+            will-change: transform;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            aspect-ratio: 21 / 9;
+            background-size: cover;
+            background-position: center;
+            background-color: #d5cec4;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 16px;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .carousel-controls button {
+            pointer-events: auto;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: background 0.2s;
+            color: #333;
+            z-index: 3;
+        }
+        .carousel-controls button:hover {
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .carousel-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+        .carousel-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .carousel-dots span.active {
+            background: #a8874a;
+        }
+
+        /* ===== 卡片样式（brand.html 内使用） ===== */
+        .card-section {
+            padding: 0 0 20px 0;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+        .card-item {
+            background: rgba(247, 245, 240, 0.5);
+            backdrop-filter: blur(4px);
+            border-radius: 12px;
+            padding: 16px 12px 18px 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: #1a1a1a;
+            display: block;
+        }
+        .card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            background: rgba(247, 245, 240, 0.7);
+        }
+        .card-item .card-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            background: rgba(200, 190, 180, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: rgba(168, 135, 74, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-item .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .card-item .card-img .placeholder {
+            color: rgba(168, 135, 74, 0.3);
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .card-item .card-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 五角星布局（brand.html 内使用） ===== */
+        .star-container {
+            position: relative;
+            width: 100%;
+            min-height: 620px;
+            margin: 10px 0 18px 0;
+        }
+        .star-item {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 190px;
+            min-height: 130px;
+            padding: 16px 18px 14px 18px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            border: 1px solid rgba(168, 135, 74, 0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            cursor: default;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1;
+            transform-origin: center center;
+            overflow: visible;
+            text-align: left;
+        }
+        .star-item:hover {
+            width: 340px;
+            min-height: 280px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+            border-color: rgba(168, 135, 74, 0.3);
+            z-index: 100;
+        }
+        .star-item .card-header {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+        .star-item .card-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+        }
+        .star-item .card-header .sub {
+            font-size: 11px;
+            font-weight: 400;
+            color: #a8874a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .star-item .short-desc {
+            font-size: 13px;
+            color: #3a3a3a;
+            line-height: 1.5;
+            margin-top: 4px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .star-item .short-desc code {
+            background: rgba(168, 135, 74, 0.08);
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #a8874a;
+            font-family: 'Consolas', monospace;
+        }
+        .star-item .detail-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.35s ease, margin 0.3s ease;
+            margin-top: 0;
+        }
+        .star-item:hover .detail-content {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 12px;
+        }
+        .star-item .detail-content p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #2a2a2a;
+            margin-bottom: 6px;
+        }
+        .star-item .detail-content .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 6px;
+        }
+        .star-item .detail-content .tech-tags span {
+            background: rgba(168, 135, 74, 0.10);
+            color: #a8874a;
+            font-size: 11px;
+            padding: 2px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(168, 135, 74, 0.08);
+            letter-spacing: 0.5px;
+        }
+        .star-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px;
+            height: 130px;
+            pointer-events: none;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .star-center svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: drop-shadow(0 2px 12px rgba(168, 135, 74, 0.15));
+        }
+        .star-center .star-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 13px;
+            font-weight: 700;
+            color: #a8874a;
+            letter-spacing: 2px;
+            text-align: center;
+            line-height: 1.3;
+            pointer-events: none;
+            text-shadow: 0 1px 8px rgba(255, 255, 255, 0.6);
+        }
+        .content-area .intro-block {
+            background: rgba(247, 245, 240, 0.5);
+            backdrop-filter: blur(4px);
+            border-radius: 12px;
+            padding: 32px 36px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .content-area .intro-block .label {
+            font-size: 11px;
+            color: #a8874a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .content-area .intro-block h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 14px;
+        }
+        .content-area .intro-block .intro-lead {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #2a2a2a;
+            margin-bottom: 18px;
+            padding-bottom: 16px;
+            border-top: 1px solid rgba(168, 135, 74, 0.1);
+        }
+        .content-area .intro-block .intro-lead strong {
+            color: #a8874a;
+        }
+        .content-area .intro-block .closed-notice {
+            text-align: center;
+            padding: 40px 0;
+            color: #a8874a;
+            font-size: 18px;
+        }
+        .content-area .intro-closing {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #2a2a2a;
+            margin-top: 10px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(168, 135, 74, 0.1);
+        }
+        .content-area .core-tags {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .content-area .core-tags span {
+            background: rgba(168, 135, 74, 0.12);
+            color: #a8874a;
+            padding: 4px 14px;
+            border-radius: 16px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(168, 135, 74, 0.1);
+        }
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 16px 0;
+            background: rgba(247, 245, 240, 0.4);
+            backdrop-filter: blur(6px);
+            margin-top: 10px;
+            flex-shrink: 0;
+        }
+        .footer .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        .footer .footer-left .qr-placeholder {
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            border: 2px dashed rgba(168, 135, 74, 0.3);
+            border-radius: 8px;
+            background: rgba(168, 135, 74, 0.05);
+            overflow: hidden;
+            line-height: 56px;
+            text-align: center;
+            color: rgba(168, 135, 74, 0.3);
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+        .footer .footer-left .qr-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .footer .footer-right {
+            text-align: left;
+        }
+        .footer .footer-right .qr-hint {
+            font-size: 12px;
+            color: rgba(50, 50, 50, 0.5);
+            margin-bottom: 2px;
+        }
+        .footer .footer-right .footer-links {
+            font-size: 13px;
+            color: rgba(50, 50, 50, 0.8);
+        }
+        .footer .footer-right .footer-copy {
+            font-size: 12px;
+            color: rgba(50, 50, 50, 0.5);
+            margin-top: 2px;
+        }
+        .footer a {
+            color: #a8874a;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 0 16px;
+            }
+            .top-bar {
+                padding: 10px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .top-bar .brand .title-group .main-title {
+                font-size: 16px;
+            }
+            .top-bar .countdown {
+                font-size: 12px;
+                padding: 4px 12px;
+            }
+            .nav-bar {
+                padding: 0 12px;
+                height: auto;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin: 0 10px;
+                border-radius: 8px;
+            }
+            .nav-bar .nav-links {
+                gap: 14px;
+            }
+            .nav-bar .nav-links a {
+                font-size: 12px;
+            }
+            .top-placeholder {
+                height: 150px;
+            }
+            .card-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            .star-container {
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+                margin: 16px 0;
+            }
+            .star-item {
+                position: static;
+                transform: none !important;
+                width: 100% !important;
+                min-height: auto !important;
+                padding: 14px 18px;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 10px;
+            }
+            .star-item:hover {
+                width: 100% !important;
+                min-height: auto !important;
+                transform: none !important;
+                background: rgba(255, 255, 255, 0.85);
+            }
+            .star-item .detail-content {
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease, opacity 0.3s ease;
+                margin-top: 0;
+            }
+            .star-item.active .detail-content {
+                max-height: 600px;
+                opacity: 1;
+                margin-top: 12px;
+            }
+            .star-center {
+                display: none;
+            }
+            .footer .footer-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            .footer .footer-right {
+                text-align: center;
+            }
+            .carousel-slide {
+                aspect-ratio: 16 / 9;
+            }
+        }
+        @media (max-width: 480px) {
+            .top-bar .brand .logo {
+                height: 36px;
+                width: 36px;
+            }
+            .top-bar .brand .title-group .main-title {
+                font-size: 14px;
+            }
+            .top-bar .brand .title-group .sub-title {
+                font-size: 10px;
+            }
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 顶部品牌栏 ===== -->
+    <header class="top-bar">
+        <a class="brand" id="brandHome" href="#">
+            <img src="images/logo.png" alt="Logo" class="logo" />
+            <div class="title-group">
+                <span class="main-title">华西综合科技运用与研究中心</span>
+                <span class="sub-title">Technology Transforms Lives, We Define Tomorrow</span>
+            </div>
+        </a>
+        <div class="countdown" id="countdownDisplay">加载中...</div>
+    </header>
+    <div class="top-placeholder"></div>
+
+    <!-- ===== 导航栏 ===== -->
+    <nav class="nav-bar" id="navBar">
+        <ul class="nav-links" id="navLinks"></ul>
+    </nav>
+
+    <!-- ===== 内容区 ===== -->
+    <main>
+        <section class="content-area wrapper" id="contentArea">
+            <div class="loading-placeholder">加载内容中...</div>
+        </section>
+    </main>
+
+    <!-- ===== 底部 ===== -->
+    <footer class="footer">
+        <div class="footer-row">
+            <div class="footer-left">
+                <span class="qr-placeholder">
+                    <img src="images/qrcode.jpg" alt="二维码" onerror="this.style.display='none';this.parentElement.textContent='?'" />
+                </span>
+            </div>
+            <div class="footer-right">
+                <div class="qr-hint">扫左码关注公众号</div>
+                <div class="footer-links">华西综合科技运用与研究中心 · 2026</div>
+                <div class="footer-links">📧 <a href="mailto:hxtecc@163.com">hxtecc@163.com</a></div>
+                <div class="footer-copy">保留所有权利</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ================================================================
+        // 1. 固定页面配置
+        // ================================================================
+        var FIXED_PAGES = [
+            { id: 'brand', name: '品牌介绍', path: 'pages/brand.html', banner: 'images/slide1.jpg' },
+            { id: 'history', name: '辉煌历史', path: 'pages/history.html', banner: 'images/slide2.jpg' },
+            { id: 'wechat', name: '公众号', path: 'pages/wechat.html', banner: 'images/slide3.jpg' },
+            { id: 'video', name: '视频品牌', path: 'pages/video.html', banner: 'images/slide4.jpg' },
+            { id: 'future', name: '着眼未来', path: 'pages/future.html', banner: 'images/slide5.jpg' }
+        ];
+
+        // ================================================================
+        // 2. 状态
+        // ================================================================
+        var allPages = [];
+        var visiblePages = [];
+        var currentPageId = 'brand';
+        var dynamicPorts = [];
+
+        var navLinks = document.getElementById('navLinks');
+        var contentArea = document.getElementById('contentArea');
+
+        // ================================================================
+        // 3. 工具函数
+        // ================================================================
+        function isPortOpen(config) {
+            if (!config || !config.startDate || !config.endDate) return false;
+            var now = new Date();
+            var start = new Date(config.startDate);
+            var end = new Date(config.endDate);
+            return now >= start && now <= end;
+        }
+
+function loadDynamicPorts() {
+    // 只扫描 port_1，不再请求不存在的端口
+    var maxPorts = 1;
+    var promises = [];
+    for (var i = 1; i <= maxPorts; i++) {
+        var folder = 'port_' + i;
+        var url = 'dynamic/' + folder + '/config.json';
+        promises.push(
+            fetch(url)
+            .then(function(res) {
+                if (!res.ok) throw new Error('No config');
+                return res.json();
+            })
+            .then(function(config) {
+                config.folder = folder;
+                return config;
+            })
+            .catch(function() { return null; })
+        );
+    }
+    return Promise.all(promises).then(function(results) {
+        dynamicPorts = results.filter(function(item) { return item !== null; });
+        return dynamicPorts;
+    });
+}
+
+        // ================================================================
+        // 4. 构建页面列表
+        // ================================================================
+        function buildPages() {
+            allPages = [];
+            FIXED_PAGES.forEach(function(p) {
+                allPages.push({
+                    id: p.id,
+                    name: p.name,
+                    path: p.path,
+                    banner: p.banner,
+                    isFixed: true,
+                    open: true,
+                    config: null
+                });
+            });
+            dynamicPorts.forEach(function(port) {
+                var open = isPortOpen(port);
+                allPages.push({
+                    id: port.folder,
+                    name: port.name,
+                    path: 'dynamic/' + port.folder + '/index.html',
+                    banner: 'dynamic/' + port.folder + '/' + (port.bannerImage || 'banner.jpg'),
+                    cardImage: 'dynamic/' + port.folder + '/' + (port.cardImage || 'card.jpg'),
+                    isFixed: false,
+                    open: open,
+                    config: port
+                });
+            });
+            visiblePages = allPages.filter(function(p) { return p.open === true; });
+        }
+
+        // ================================================================
+        // 5. 渲染导航 + 高亮
+        // ================================================================
+        function renderNav() {
+            navLinks.innerHTML = '';
+            visiblePages.forEach(function(p) {
+                var li = document.createElement('li');
+                var a = document.createElement('a');
+                a.href = '#';
+                a.dataset.page = p.id;
+                a.textContent = p.name;
+                if (p.id === currentPageId) {
+                    a.classList.add('active');
+                }
+                a.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadPage(this.dataset.page);
+                });
+                li.appendChild(a);
+                navLinks.appendChild(li);
+            });
+        }
+
+        function updateNavActive(pageId) {
+            var links = navLinks.querySelectorAll('a');
+            links.forEach(function(a) {
+                if (a.dataset.page === pageId) {
+                    a.classList.add('active');
+                } else {
+                    a.classList.remove('active');
+                }
+            });
+            currentPageId = pageId;
+        }
+
+        // ================================================================
+        // 6. 加载页面
+        // ================================================================
+        function loadPage(pageId) {
+            var page = allPages.find(function(p) { return p.id === pageId; });
+            if (!page) {
+                contentArea.innerHTML = '<div class="loading-placeholder">页面不存在</div>';
+                return;
+            }
+            if (!page.open) {
+                contentArea.innerHTML = '<div class="intro-block"><div class="label">活动已结束</div><h2>' + page.name +
+                    '</h2><div class="closed-notice">📅 本次活动已结束，感谢关注</div></div>';
+                updateNavActive(pageId);
+                return;
+            }
+
+            contentArea.innerHTML = '<div class="loading-placeholder">加载中...</div>';
+            fetch(page.path)
+                .then(function(res) {
+                    if (!res.ok) throw new Error('加载失败');
+                    return res.text();
+                })
+                .then(function(html) {
+                    contentArea.innerHTML = html;
+                    updateNavActive(pageId);
+                    // 执行页面内脚本
+                    var scripts = contentArea.querySelectorAll('script');
+                    scripts.forEach(function(script) {
+                        var newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                        document.body.removeChild(newScript);
+                    });
+                })
+                .catch(function() {
+                    contentArea.innerHTML = '<div class="loading-placeholder">内容加载失败，请稍后重试</div>';
+                });
+        }
+
+        // ================================================================
+        // 7. 品牌首页点击
+        // ================================================================
+        document.getElementById('brandHome').addEventListener('click', function(e) {
+            e.preventDefault();
+            loadPage('brand');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ================================================================
+        // 8. 倒计时
+        // ================================================================
+        (function() {
+            var targetDate = new Date('2026-09-01T00:00:00');
+            var display = document.getElementById('countdownDisplay');
+
+            function update() {
+                var now = new Date();
+                var diff = targetDate - now;
+                if (diff <= 0) {
+                    var days = Math.floor((now - targetDate) / (1000 * 60 * 60 * 24));
+                    display.textContent = '✅ 已开学 ' + days + ' 天';
+                    return;
+                }
+                var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                var h = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                var m = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                var s = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+                display.textContent = '离开学还有 ' + days + ' 天 ' + h + ':' + m + ':' + s;
+            }
+            update();
+            setInterval(update, 1000);
+        })();
+
+        // ================================================================
+        // 9. 全局暴露（供 brand.html 调用）
+        // ================================================================
+        window.app = {
+            loadPage: loadPage,
+            getCurrentPage: function() { return currentPageId; },
+            getVisiblePages: function() { return visiblePages; },
+            getAllPages: function() { return allPages; }
+        };
+
+        // ================================================================
+        // 10. 初始化
+        // ================================================================
+        loadDynamicPorts().then(function() {
+            buildPages();
+            renderNav();
+            loadPage('brand');
+        }).catch(function() {
+            buildPages();
+            renderNav();
+            loadPage('brand');
+        });
+    </script>
+
+</body>
+</html>

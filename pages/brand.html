@@ -1,0 +1,913 @@
+<!-- ============================================================
+brand.html —— 品牌介绍页面
+包含：轮播图（固定区域，无边缘溢出） + 六个纯文字卡片 + 五角星（完整）
+============================================================ -->
+
+<!-- ===== 轮播图（固定区域） ===== -->
+<div class="carousel-section wrapper">
+    <div class="carousel-track" id="carouselTrack"></div>
+    <div class="carousel-controls">
+        <button id="prevBtn">‹</button>
+        <button id="nextBtn">›</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+</div>
+
+<!-- ===== 六个纯文字卡片 ===== -->
+<section class="card-section">
+    <div class="card-grid" id="cardGrid"></div>
+</section>
+
+<!-- ===== 品牌介绍 + 五角星（完整保留） ===== -->
+<div class="intro-block">
+    <div class="label">品牌介绍</div>
+    <h2>华西综合科技运用与研究中心</h2>
+
+    <div class="intro-lead">
+        以工程交付能力为底座，横跨 <strong>软件开发</strong>、<strong>网络安全</strong>、<strong>音视频制作</strong>、<strong>硬件安全</strong> 与 <strong>设计创作</strong>。
+        不追求单一技术的极致深度，而是以 <strong>「动手 > 人文 > 技术」</strong> 为行动准则，
+        在多个方向上保持「能动手、能交付」的持续产出状态。
+        技术是工具，表达是目的，动手是连接两者的桥梁。
+    </div>
+
+    <!-- ===== 五角星容器 ===== -->
+    <div class="star-container" id="starContainer">
+
+        <!-- 1. 全栈交付 -->
+        <div class="star-item" data-dir="fullstack">
+            <div class="card-header">
+                <h3>全栈交付</h3>
+                <span class="sub">Full‑Stack</span>
+            </div>
+            <div class="short-desc">
+                主修 <code>JS/TS</code>，兼修 Python、Java、C++，未来主修 <strong>Java</strong>。
+            </div>
+            <div class="detail-content">
+                <p><strong>技术栈：</strong>JavaScript / TypeScript · HTML/CSS · React/Vue · Node.js · Python · Java · C++</p>
+                <p><strong>项目：</strong></p>
+                <p>• 「银狐猎手」浏览器安全扩展 —— 域名黑名单匹配 + 动态规则更新，实时拦截高风险恶意域名。</p>
+                <p>• Node.js 后端服务开发 —— 从接口设计到数据库对接，具备完整的服务端交付能力。</p>
+                <p>• 跨平台桌面应用 —— 使用 <strong>Electron</strong> 将 Web 技术打包为 Windows / macOS / Linux 原生可执行程序（.exe / .dmg / AppImage）。</p>
+                <p>• Node.js 原生模块 —— 通过 <strong>N-API / node-addon-api</strong> 编写 C++ 扩展，打通 Node.js 与底层系统资源。</p>
+                <p><strong>能力：</strong>浏览器扩展开发 · 全链路应用落地 · 服务端架构设计 · 跨平台桌面应用交付 · Node.js 原生模块扩展。</p>
+                <p style="font-style:italic;color:#a8874a;">“任何可以用 JavaScript 实现的，最终都将用 JavaScript 实现。”</p>
+                <p style="font-style:italic;color:#a8874a;">“未来主修 Java，往更深的地方走。”</p>
+                <div class="tech-tags">
+                    <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Node.js</span>
+                    <span>Electron</span><span>Python</span><span>Java</span><span>C++</span>
+                    <span>N-API</span><span>浏览器扩展</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 网络安全 -->
+        <div class="star-item" data-dir="security">
+            <div class="card-header">
+                <h3>网络安全</h3>
+                <span class="sub">Cyber Security</span>
+            </div>
+            <div class="short-desc">
+                网络渗透测试（TK）· Kali Linux · 学校 IP 网络广播系统实操。
+            </div>
+            <div class="detail-content">
+                <p><strong>技术栈：</strong>网络渗透测试（TK）工具链 · Kali Linux · Nmap · Wireshark · Metasploit · Burp Suite</p>
+                <p><strong>项目：</strong>学校 IP 网络广播系统 —— 对底层架构和运行逻辑有一定了解，具备基础的网络诊断与安全分析能力。</p>
+                <p><strong>能力：</strong>Kali Linux 环境下的安全工具链使用 · 网络攻击面识别 · 基础加固与防御。</p>
+                <p style="font-style:italic;color:#a8874a;">“网络安全的本质，是对系统底层逻辑的理解深度。”</p>
+                <div class="tech-tags">
+                    <span>Kali Linux</span><span>TK</span><span>Nmap</span><span>Wireshark</span>
+                    <span>Metasploit</span><span>Burp Suite</span><span>网络诊断</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 音视频工程 -->
+        <div class="star-item" data-dir="av">
+            <div class="card-header">
+                <h3>音视频工程</h3>
+                <span class="sub">AV Engineering</span>
+            </div>
+            <div class="short-desc">
+                剪辑 · 调音 · 音乐创作 · 钢琴演奏。
+            </div>
+            <div class="detail-content">
+                <p><strong>技术栈：</strong>非线性编辑 (Premiere/DaVinci) · 数字音频工作站 (Logic/Cubase) · 钢琴演奏</p>
+                <p><strong>项目：</strong>毕业视频制作（剪辑/调色/包装）· 学校广播系统调音 · 原创音乐作品持续产出。</p>
+                <p><strong>能力：</strong>素材采集到成片输出 · 音乐制作全流程 (作曲/编曲/混音)。</p>
+                <p style="font-style:italic;color:#a8874a;">“声音与画面，是精准的表达语言。”</p>
+                <div class="tech-tags">
+                    <span>Premiere</span><span>DaVinci</span><span>Logic</span><span>钢琴</span><span>音乐制作</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 硬件安全 -->
+        <div class="star-item" data-dir="hardware">
+            <div class="card-header">
+                <h3>硬件安全</h3>
+                <span class="sub">Hardware Security</span>
+            </div>
+            <div class="short-desc">
+                USB 安全 · 汽车安全系统 · 固件安全 · 物理接口分析。
+            </div>
+            <div class="detail-content">
+                <p><strong>研究方向：</strong></p>
+                <p>• USB 设备安全（BadUSB、USB 协议攻击）</p>
+                <p>• U 盘固件安全与病毒传播原理</p>
+                <p>• 汽车电子控制单元（ECU）与 CAN 总线安全</p>
+                <p>• 车联网安全 · 物联网设备安全</p>
+                <p><strong>能力：</strong>硬件攻击面识别 · 物理接口安全分析 · 嵌入式系统安全评估。</p>
+                <p style="font-style:italic;color:#a8874a;">“硬件是软件的基础，硬件安全是系统安全的起点。”</p>
+                <div class="tech-tags">
+                    <span>USB安全</span><span>BadUSB</span><span>U盘固件</span>
+                    <span>CAN总线</span><span>汽车安全</span><span>IoT安全</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 设计创作 -->
+        <div class="star-item" data-dir="design">
+            <div class="card-header">
+                <h3>设计创作</h3>
+                <span class="sub">Design &amp; Creation</span>
+            </div>
+            <div class="short-desc">
+                3D 建模 · 美术 · 写作 · 视觉表达。
+            </div>
+            <div class="detail-content">
+                <p><strong>技术栈：</strong>3D 建模 (Blender/Maya) · 美术设计 · 小说/非虚构写作</p>
+                <p><strong>项目：</strong>3D 建模作品（产品可视化/场景设计）· 小说创作（已积累多篇）· 非虚构写作（技术随笔/生活记录）。</p>
+                <p><strong>能力：</strong>概念构思到可交付成果 · 技术思维与视觉表达融合。</p>
+                <p style="font-style:italic;color:#a8874a;">“设计与创作，是对世界认知的映射与追问。”</p>
+                <div class="tech-tags">
+                    <span>Blender</span><span>3D建模</span><span>美术设计</span><span>小说</span><span>非虚构</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中心五角星 -->
+        <div class="star-center">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#a8874a;stop-opacity:0.15" />
+                        <stop offset="100%" style="stop-color:#c9b07a;stop-opacity:0.40" />
+                    </linearGradient>
+                    <filter id="starShadow">
+                        <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#a8874a" flood-opacity="0.15" />
+                    </filter>
+                </defs>
+                <polygon points="60,10 74.7,48.5 115.5,48.5 82.7,71.8 94.5,110.5 60,88.2 25.5,110.5 37.3,71.8 4.5,48.5 45.3,48.5" fill="url(#starGrad)" stroke="#a8874a" stroke-width="1.5" stroke-linejoin="round" filter="url(#starShadow)" />
+                <circle cx="60" cy="60" r="16" fill="none" stroke="#a8874a" stroke-width="0.8" opacity="0.25" />
+                <circle cx="60" cy="60" r="8" fill="none" stroke="#a8874a" stroke-width="0.6" opacity="0.15" />
+            </svg>
+            <div class="star-label">五维<br />合一</div>
+        </div>
+
+    </div>
+
+    <div class="intro-closing">
+        整体而言，这不是一个「只会写代码」的个人站点，而是一个在 <strong>五个方向</strong> 上都具备实际交付能力的综合型工作台。
+        每条线的深度或许有限，但每条线都能完成从想法到成果的闭环。
+        技术是工具，表达是目的，动手是连接两者的桥梁。
+        这里不定义边界，只定义行动——保持动手，保持产出，让方向在实践中逐渐清晰。
+    </div>
+
+    <div class="core-tags">
+        <span>全栈交付</span><span>网络安全</span><span>音视频工程</span>
+        <span>硬件安全</span><span>设计创作</span>
+        <span>JavaScript / TypeScript</span><span>Python</span><span>Java</span><span>C++</span>
+        <span>Kali Linux</span><span>DNS &amp; IPv4</span><span>3D 建模</span>
+    </div>
+</div>
+
+<!-- ============================================================
+样式
+============================================================ -->
+<style>
+    /* ===== 轮播图：固定显示区域，强制隐藏溢出 ===== */
+    .carousel-section {
+        margin: 20px auto 0 auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(2px);
+        position: relative;
+        width: 100%;
+        max-width: 1160px;
+        cursor: pointer;
+        /* 固定显示区域 */
+        aspect-ratio: 21 / 9;
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.6s ease;
+        will-change: transform;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-color: #d5cec4;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-slide .fallback-text {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 12px 24px;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .carousel-controls {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .carousel-controls button {
+        pointer-events: auto;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(4px);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        transition: background 0.2s;
+        color: #333;
+        z-index: 3;
+    }
+
+    .carousel-controls button:hover {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .carousel-dots {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 2;
+    }
+
+    .carousel-dots span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .carousel-dots span.active {
+        background: #a8874a;
+    }
+
+    /* ===== 纯文字卡片 ===== */
+    .card-section {
+        padding: 0 0 20px 0;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 16px;
+    }
+
+    .card-item {
+        background: rgba(247, 245, 240, 0.5);
+        backdrop-filter: blur(4px);
+        border-radius: 12px;
+        padding: 20px 12px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        text-decoration: none;
+        color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80px;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        user-select: none;
+    }
+
+    .card-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        background: rgba(247, 245, 240, 0.8);
+    }
+
+    .card-label {
+        font-size: 15px;
+        font-weight: 500;
+        color: #1a1a1a;
+        letter-spacing: 1px;
+    }
+
+    /* ===== 五角星样式 ===== */
+    .star-container {
+        position: relative;
+        width: 100%;
+        min-height: 620px;
+        margin: 10px 0 18px 0;
+    }
+
+    .star-item {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 190px;
+        min-height: 130px;
+        padding: 16px 18px 14px 18px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 12px;
+        border: 1px solid rgba(168, 135, 74, 0.12);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        cursor: default;
+        transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 1;
+        transform-origin: center center;
+        overflow: visible;
+        text-align: left;
+    }
+
+    .star-item:hover {
+        width: 340px;
+        min-height: 280px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+        border-color: rgba(168, 135, 74, 0.3);
+        z-index: 100;
+    }
+
+    .star-item .card-header {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 6px;
+    }
+
+    .star-item .card-header h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: 1px;
+    }
+
+    .star-item .card-header .sub {
+        font-size: 11px;
+        font-weight: 400;
+        color: #a8874a;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .star-item .short-desc {
+        font-size: 13px;
+        color: #3a3a3a;
+        line-height: 1.5;
+        margin-top: 4px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .star-item .short-desc code {
+        background: rgba(168, 135, 74, 0.08);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #a8874a;
+        font-family: 'Consolas', monospace;
+    }
+
+    .star-item .detail-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.35s ease, margin 0.3s ease;
+        margin-top: 0;
+    }
+
+    .star-item:hover .detail-content {
+        max-height: 600px;
+        opacity: 1;
+        margin-top: 12px;
+    }
+
+    .star-item .detail-content p {
+        font-size: 13px;
+        line-height: 1.7;
+        color: #2a2a2a;
+        margin-bottom: 6px;
+    }
+
+    .star-item .detail-content .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 6px;
+    }
+
+    .star-item .detail-content .tech-tags span {
+        background: rgba(168, 135, 74, 0.10);
+        color: #a8874a;
+        font-size: 11px;
+        padding: 2px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(168, 135, 74, 0.08);
+        letter-spacing: 0.5px;
+    }
+
+    .star-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 130px;
+        height: 130px;
+        pointer-events: none;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .star-center svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        filter: drop-shadow(0 2px 12px rgba(168, 135, 74, 0.15));
+    }
+
+    .star-center .star-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 13px;
+        font-weight: 700;
+        color: #a8874a;
+        letter-spacing: 2px;
+        text-align: center;
+        line-height: 1.3;
+        pointer-events: none;
+        text-shadow: 0 1px 8px rgba(255, 255, 255, 0.6);
+    }
+
+    .intro-block {
+        background: rgba(247, 245, 240, 0.5);
+        backdrop-filter: blur(4px);
+        border-radius: 12px;
+        padding: 32px 36px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .intro-block .label {
+        font-size: 11px;
+        color: #a8874a;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    .intro-block h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 14px;
+    }
+
+    .intro-block .intro-lead {
+        font-size: 15px;
+        line-height: 1.9;
+        color: #2a2a2a;
+        margin-bottom: 18px;
+        padding-bottom: 16px;
+        border-top: 1px solid rgba(168, 135, 74, 0.1);
+    }
+
+    .intro-block .intro-lead strong {
+        color: #a8874a;
+    }
+
+    .intro-block .intro-closing {
+        font-size: 14px;
+        line-height: 1.9;
+        color: #2a2a2a;
+        margin-top: 10px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(168, 135, 74, 0.1);
+    }
+
+    .intro-block .core-tags {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .intro-block .core-tags span {
+        background: rgba(168, 135, 74, 0.12);
+        color: #a8874a;
+        padding: 4px 14px;
+        border-radius: 16px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        border: 1px solid rgba(168, 135, 74, 0.1);
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 768px) {
+        .card-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .card-item {
+            min-height: 60px;
+            font-size: 13px;
+            padding: 14px 10px;
+        }
+        .star-container {
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .star-item {
+            position: static;
+            transform: none !important;
+            width: 100% !important;
+            min-height: auto !important;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+        }
+        .star-item:hover {
+            width: 100% !important;
+            min-height: auto !important;
+            transform: none !important;
+            background: rgba(255, 255, 255, 0.85);
+        }
+        .star-item .detail-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            margin-top: 0;
+        }
+        .star-item.active .detail-content {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 12px;
+        }
+        .star-center {
+            display: none;
+        }
+        .intro-block {
+            padding: 20px;
+        }
+        .intro-block h2 {
+            font-size: 20px;
+        }
+        .carousel-slide {
+            aspect-ratio: 16 / 9;
+        }
+        .carousel-controls button {
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .card-item {
+            min-height: 50px;
+            font-size: 12px;
+            padding: 10px 8px;
+        }
+        .carousel-controls button {
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
+        }
+    }
+</style>
+
+<!-- ============================================================
+脚本
+============================================================ -->
+<script>
+    (function() {
+        // ---- 获取可见页面数据 ----
+        var visiblePages = [];
+        if (window.app && typeof window.app.getVisiblePages === 'function') {
+            visiblePages = window.app.getVisiblePages();
+        }
+        if (!visiblePages || visiblePages.length === 0) {
+            visiblePages = [
+                { id: 'brand', name: '品牌介绍', banner: 'images/slide1.jpg' },
+                { id: 'history', name: '辉煌历史', banner: 'images/slide2.jpg' },
+                { id: 'wechat', name: '公众号', banner: 'images/slide3.jpg' },
+                { id: 'video', name: '视频品牌', banner: 'images/slide4.jpg' },
+                { id: 'future', name: '着眼未来', banner: 'images/slide5.jpg' }
+            ];
+        }
+
+        // ---- 渲染纯文字卡片 ----
+        var cardGrid = document.getElementById('cardGrid');
+        if (cardGrid) {
+            var cardHtml = '';
+            var fixedIds = ['brand', 'history', 'wechat', 'video', 'future'];
+
+            fixedIds.forEach(function(id) {
+                var page = visiblePages.find(function(p) { return p.id === id; });
+                if (page) {
+                    cardHtml += '<div class="card-item" data-page="' + id + '">';
+                    cardHtml += '  <span class="card-label">' + page.name + '</span>';
+                    cardHtml += '</div>';
+                }
+            });
+
+            var dynamicPages = visiblePages.filter(function(p) { return !p.isFixed; });
+            dynamicPages.forEach(function(p) {
+                cardHtml += '<div class="card-item" data-page="' + p.id + '">';
+                cardHtml += '  <span class="card-label">' + p.name + '</span>';
+                cardHtml += '</div>';
+            });
+
+            cardGrid.innerHTML = cardHtml;
+
+            var cards = cardGrid.querySelectorAll('.card-item');
+            cards.forEach(function(card) {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var pageId = this.dataset.page;
+                    if (window.app && typeof window.app.loadPage === 'function') {
+                        window.app.loadPage(pageId);
+                        var contentArea = document.getElementById('contentArea');
+                        if (contentArea) {
+                            contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+        }
+
+        // ---- 轮播图 ----
+        var track = document.getElementById('carouselTrack');
+        var dotsContainer = document.getElementById('carouselDots');
+        var prevBtn = document.getElementById('prevBtn');
+        var nextBtn = document.getElementById('nextBtn');
+
+        if (!track || !dotsContainer || !prevBtn || !nextBtn) {
+            console.warn('轮播图元素缺失');
+        } else {
+            var carouselData = visiblePages.map(function(p) {
+                return { image: p.banner, pageId: p.id, name: p.name };
+            });
+
+            if (carouselData.length === 0) {
+                track.innerHTML = '<div class="carousel-slide"><span class="fallback-text">暂无轮播图</span></div>';
+                dotsContainer.innerHTML = '';
+            } else {
+                var total = carouselData.length;
+                var displayItems = [];
+                if (total > 0) {
+                    var last = carouselData[total - 1];
+                    var first = carouselData[0];
+                    displayItems.push({ ...last, isClone: true, cloneOf: total - 1 });
+                    carouselData.forEach(function(item) { displayItems.push({ ...item, isClone: false }); });
+                    displayItems.push({ ...first, isClone: true, cloneOf: 0 });
+                }
+
+                track.innerHTML = '';
+                displayItems.forEach(function(item, idx) {
+                    var div = document.createElement('div');
+                    div.className = 'carousel-slide';
+                    if (item.image) {
+                        div.style.backgroundImage = 'url(' + item.image + ')';
+                    } else {
+                        div.innerHTML = '<span class="fallback-text">图片缺失：' + (item.name || '未命名') + '</span>';
+                    }
+                    div.dataset.pageId = item.pageId || '';
+                    div.dataset.index = idx;
+                    div.addEventListener('click', function(e) {
+                        if (e.target.closest('button')) return;
+                        var pageId = this.dataset.pageId;
+                        if (pageId && window.app && typeof window.app.loadPage === 'function') {
+                            window.app.loadPage(pageId);
+                        }
+                    });
+                    track.appendChild(div);
+                });
+
+                dotsContainer.innerHTML = '';
+                for (var i = 0; i < total; i++) {
+                    var dot = document.createElement('span');
+                    dot.dataset.index = i;
+                    dotsContainer.appendChild(dot);
+                }
+
+                var currentIndex = 1;
+                var isTransitioning = false;
+                var autoInterval = null;
+                var autoDelay = 5000;
+
+                function goTo(index, animate) {
+                    if (animate === undefined) animate = true;
+                    var slides = track.querySelectorAll('.carousel-slide');
+                    if (slides.length === 0) return;
+                    var maxIndex = slides.length - 1;
+                    if (index < 0) index = 0;
+                    if (index > maxIndex) index = maxIndex;
+                    currentIndex = index;
+
+                    if (animate) {
+                        track.style.transition = 'transform 0.6s ease';
+                    } else {
+                        track.style.transition = 'none';
+                    }
+                    track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+
+                    var realIndex = currentIndex - 1;
+                    if (realIndex < 0) realIndex = total - 1;
+                    if (realIndex >= total) realIndex = 0;
+                    var dots = dotsContainer.querySelectorAll('span');
+                    dots.forEach(function(d, i) {
+                        d.classList.toggle('active', i === realIndex);
+                    });
+
+                    if (!animate) {
+                        void track.offsetHeight;
+                        track.style.transition = 'transform 0.6s ease';
+                    }
+                }
+
+                function checkLoop() {
+                    var slides = track.querySelectorAll('.carousel-slide');
+                    if (currentIndex === 0) {
+                        isTransitioning = false;
+                        goTo(total, false);
+                        return;
+                    }
+                    if (currentIndex === slides.length - 1) {
+                        isTransitioning = false;
+                        goTo(1, false);
+                        return;
+                    }
+                }
+
+                track.addEventListener('transitionend', function() {
+                    isTransitioning = false;
+                    checkLoop();
+                });
+
+                function nextCarousel() {
+                    if (isTransitioning) return;
+                    if (carouselData.length <= 1) return;
+                    isTransitioning = true;
+                    goTo(currentIndex + 1, true);
+                }
+
+                function prevCarousel() {
+                    if (isTransitioning) return;
+                    if (carouselData.length <= 1) return;
+                    isTransitioning = true;
+                    goTo(currentIndex - 1, true);
+                }
+
+                function startAuto() {
+                    if (autoInterval) clearInterval(autoInterval);
+                    if (carouselData.length <= 1) return;
+                    autoInterval = setInterval(nextCarousel, autoDelay);
+                }
+
+                function stopAuto() {
+                    if (autoInterval) {
+                        clearInterval(autoInterval);
+                        autoInterval = null;
+                    }
+                }
+
+                prevBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    stopAuto();
+                    prevCarousel();
+                    startAuto();
+                });
+
+                nextBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    stopAuto();
+                    nextCarousel();
+                    startAuto();
+                });
+
+                dotsContainer.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'SPAN' && e.target.dataset.index !== undefined) {
+                        stopAuto();
+                        var idx = parseInt(e.target.dataset.index) + 1;
+                        isTransitioning = true;
+                        goTo(idx, true);
+                        startAuto();
+                    }
+                });
+
+                var section = document.querySelector('.carousel-section');
+                if (section) {
+                    section.addEventListener('mouseenter', stopAuto);
+                    section.addEventListener('mouseleave', startAuto);
+                }
+
+                goTo(1, false);
+                startAuto();
+            }
+        }
+
+        // ---- 五角星定位 ----
+        var container = document.getElementById('starContainer');
+        if (container && window.innerWidth > 768) {
+            var items = container.querySelectorAll('.star-item');
+            if (items.length) {
+                function positionItems() {
+                    var rect = container.getBoundingClientRect();
+                    var w = rect.width;
+                    var h = rect.height;
+                    var radius = Math.min(w, h) * 0.36;
+                    if (radius > 220) radius = 220;
+                    if (radius < 120) radius = 120;
+                    var angles = [-90, -18, 54, 126, 198];
+                    items.forEach(function(item, idx) {
+                        var angle = angles[idx] || 0;
+                        item.style.transform = 'translate(-50%, -50%) rotate(' + angle + 'deg) translateX(' + radius + 'px) rotate(' + (-angle) + 'deg)';
+                        item.style.top = '50%';
+                        item.style.left = '50%';
+                        item.style.position = 'absolute';
+                    });
+                }
+                positionItems();
+                var timeoutId;
+                window.addEventListener('resize', function() {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(function() {
+                        if (window.innerWidth > 768) positionItems();
+                    }, 200);
+                });
+            }
+        }
+
+        // ---- 移动端展开 ----
+        if (window.innerWidth <= 768) {
+            var starItems = document.querySelectorAll('.star-item');
+            starItems.forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                });
+            });
+            document.addEventListener('click', function() {
+                starItems.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+            });
+        }
+    })();
+</script>

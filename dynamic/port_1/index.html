@@ -1,0 +1,331 @@
+<!-- ============================================================
+dynamic/port_1/index.html —— 教师节·专题
+看板风格 · 去AI化 · GSAP淡入动画（使用全局库）
+开放时间：2026-09-01 至 2026-09-10
+============================================================ -->
+
+<div class="notice-board" id="teachersBoard">
+    <div class="board-inner">
+
+        <!-- ===== 看板顶部：节日标识 ===== -->
+        <div class="board-header" data-animate>
+            <div class="board-avatar">
+                <img src="../images/wechat_avatar.jpg" alt="HXTCC" />
+            </div>
+            <div class="board-title">
+                <div class="board-name" style="font-size:26px;letter-spacing:3px;">教师节 · 专题</div>
+                <div class="board-sub" style="font-size:16px;color:#a8874a;font-weight:500;">师者如光 · 微以致远</div>
+                <div class="board-sub-en" style="font-size:13px;color:#999;">2026.09.01 — 2026.09.10</div>
+            </div>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 节日致辞 ===== -->
+        <div class="board-intro" data-animate>
+            <p style="font-size:16px;font-weight:500;color:#a8874a;text-align:center;letter-spacing:2px;margin-bottom:12px;">
+                第42个教师节 · 致敬每一位引路人
+            </p>
+            <p>教师，是一份用生命影响生命的职业。</p>
+            <p>初中三年、高中三年，是一个人世界观形成的关键时期。而站在讲台上的他们，不仅传授知识，更在无数个清晨与深夜中，承担着塑造灵魂的重任。</p>
+            <p style="margin-top:10px;color:#a8874a;font-style:italic;">“教育是一棵树摇动另一棵树，一朵云推动另一朵云，一个灵魂唤醒另一个灵魂。”</p>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 现实困境 ===== -->
+        <div class="board-reality" data-animate>
+            <div class="reality-label">📌 那些被忽视的困境</div>
+
+            <div class="reality-item">
+                <div class="reality-title">婚恋之困</div>
+                <div class="reality-desc">
+                    全国中小学女教师占比超 <strong>72%</strong>，小学超 <strong>82%</strong>。
+                    县城体制内女教师单身率持续上升，部分县城30岁以上未婚女教师占比突破 <strong>40%</strong>。
+                    社交圈只剩女同事和家长，一年遇不到几个适龄异性。
+                    2025年，河南鲁山县一名28岁高中女教师因被父母逼婚，在新婚当天坠楼身亡。
+                </div>
+            </div>
+
+            <div class="reality-item">
+                <div class="reality-title">职业压力</div>
+                <div class="reality-desc">
+                    <strong>38.2%</strong> 的教师处于“亚健康”状态，认为自己“非常健康”的仅占 <strong>8.14%</strong>。
+                    近 <strong>40%</strong> 的教师存在抑郁、焦虑倾向。
+                    <strong>77%</strong> 的教师每日在校超9小时，<strong>77.9%</strong> 每周工时达51小时以上。
+                </div>
+            </div>
+
+            <div class="reality-item">
+                <div class="reality-title">职业倦怠</div>
+                <div class="reality-desc">
+                    教师职业倦怠比例达 <strong>57.3%</strong>。
+                    近 <strong>9成</strong> 被调研教师有不同程度的职业倦怠。
+                    职称评定、行政任务、家校沟通和学生安全监管，已成为教师教学外压力的主要来源。
+                </div>
+            </div>
+
+            <div class="reality-item" style="border-bottom:none;margin-bottom:0;">
+                <div class="reality-title">权益保护</div>
+                <div class="reality-desc">
+                    教育部健全权益保障机制，及时澄清涉师不实举报，会同公安部严厉打击诋毁、污名教师等违法行为。
+                    各地检察院开展“法律护师”行动，为教师群体筑牢权益“防护盾”。
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 致敬 + 祝福 ===== -->
+        <div class="board-tribute" data-animate>
+            <p style="font-size:18px;font-weight:600;color:#1a1a1a;text-align:center;letter-spacing:2px;margin-bottom:8px;">
+                老师，辛苦了
+            </p>
+            <p style="font-size:14px;color:#666;text-align:center;line-height:1.9;max-width:600px;margin:0 auto;">
+                讲台上粉笔灰染白了青丝，办公室里批改作业的灯光亮到深夜。<br />
+                那些被忽视的困境，不应该成为他们独自承受的重量。<br />
+                愿每一位老师，都被看见、被理解、被善待。
+            </p>
+            <p style="margin-top:12px;font-size:13px;color:#a8874a;text-align:center;letter-spacing:2px;">
+                —— 第42个教师节 · 2026
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ============================================================
+样式
+============================================================ -->
+<style>
+    .notice-board {
+        background: rgba(245, 240, 233, 0.5);
+        backdrop-filter: blur(4px);
+        border-radius: 16px;
+        padding: 20px 24px 24px 24px;
+        border: 1px solid rgba(200, 190, 180, 0.3);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .board-inner {
+        background: rgba(255, 252, 248, 0.7);
+        border-radius: 12px;
+        padding: 24px 28px;
+        border: 1px solid rgba(200, 190, 180, 0.15);
+    }
+
+    .board-header,
+    .board-intro,
+    .board-reality,
+    .board-tribute {
+        opacity: 0;
+        transform: translateY(24px);
+        will-change: opacity, transform;
+    }
+
+    .board-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .board-avatar {
+        flex-shrink: 0;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid rgba(168, 135, 74, 0.15);
+        background: rgba(200, 190, 180, 0.1);
+    }
+
+    .board-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .board-title {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .board-name {
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: 3px;
+        line-height: 1.2;
+    }
+
+    .board-sub {
+        font-size: 14px;
+        color: #666;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+    }
+
+    .board-sub-en {
+        font-size: 12px;
+        color: #999;
+        letter-spacing: 0.3px;
+        margin-top: 2px;
+    }
+
+    .board-divider {
+        text-align: center;
+        color: rgba(168, 135, 74, 0.25);
+        font-size: 12px;
+        letter-spacing: 4px;
+        padding: 14px 0 12px 0;
+        user-select: none;
+        font-family: 'Times New Roman', serif;
+    }
+
+    .board-intro {
+        font-size: 14px;
+        line-height: 1.9;
+        color: #2a2a2a;
+        padding: 0 0 2px 0;
+    }
+
+    .board-intro p {
+        margin-bottom: 6px;
+        text-align: center;
+    }
+
+    /* ===== 现实困境 ===== */
+    .board-reality {
+        padding: 0 0 2px 0;
+    }
+
+    .reality-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #a8874a;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .reality-item {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(200, 190, 180, 0.12);
+        margin-bottom: 4px;
+    }
+
+    .reality-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 4px;
+        letter-spacing: 0.5px;
+    }
+
+    .reality-desc {
+        font-size: 13.5px;
+        line-height: 1.8;
+        color: #444;
+    }
+
+    .reality-desc strong {
+        color: #a8874a;
+        font-weight: 600;
+    }
+
+    /* ===== 致敬 ===== */
+    .board-tribute {
+        padding: 4px 0 2px 0;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 480px) {
+        .notice-board {
+            padding: 12px 14px;
+        }
+
+        .board-inner {
+            padding: 18px 16px;
+        }
+
+        .board-avatar {
+            width: 52px;
+            height: 52px;
+        }
+
+        .board-name {
+            font-size: 20px !important;
+            letter-spacing: 2px !important;
+        }
+
+        .board-sub {
+            font-size: 13px !important;
+        }
+
+        .board-intro {
+            font-size: 13px;
+        }
+
+        .reality-title {
+            font-size: 14px;
+        }
+
+        .reality-desc {
+            font-size: 12.5px;
+        }
+
+        .board-tribute p {
+            font-size: 15px !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .board-header {
+            gap: 14px;
+        }
+    }
+</style>
+
+
+<!-- ============================================================
+GSAP 淡入动画（直接执行，不依赖 DOMContentLoaded）
+使用全局 gsap 和 ScrollTrigger（由 index.html 加载）
+============================================================ -->
+<script>
+    (function() {
+        // 检查全局 GSAP 是否已加载
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            // 如果库还没加载，等 200ms 后再试一次
+            setTimeout(arguments.callee, 200);
+            return;
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        var elements = document.querySelectorAll('#teachersBoard [data-animate]');
+        if (!elements.length) return;
+
+        gsap.set(elements, { opacity: 0, y: 24 });
+
+        elements.forEach(function(el, index) {
+            gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                delay: index * 0.15,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 92%',
+                    toggleActions: 'play none none none',
+                    once: true
+                }
+            });
+        });
+
+        ScrollTrigger.refresh();
+    })();
+</script>

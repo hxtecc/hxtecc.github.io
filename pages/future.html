@@ -1,0 +1,238 @@
+<!-- ============================================================
+pages/future.html —— 着眼未来
+背景图：轮播图第5张（images/slide5.jpg）· 完全覆盖
+金句 + 展望未来
+============================================================ -->
+
+<div class="future-fullscreen" id="futureBoard">
+    <div class="future-overlay"></div>
+    <div class="future-content" data-animate>
+        <div class="future-icon">✦</div>
+        <h1 class="future-title">从这里走向世界</h1>
+
+        <div class="future-quote-group">
+            <p class="future-quote">“技术是工具，表达是目的，动手是连接两者的桥梁。”</p>
+            <p class="future-quote">“这条路由无数个『动手』的瞬间铺成。”</p>
+            <p class="future-quote">“不定义边界，只定义行动。”</p>
+        </div>
+
+        <div class="future-line"></div>
+
+        <div class="future-outlook">
+            <p>代码会继续写下去，视频会继续剪下去。</p>
+            <p>安全会继续研究，硬件会继续拆解，设计会继续打磨。</p>
+            <p>五条线还在往前走，有些会合拢，有些会断开，</p>
+            <p>有些会走到更远的地方。</p>
+            <p style="margin-top:10px;font-weight:500;letter-spacing:2px;color:#f0e6d0;">
+                无所谓哪条是“主路”，能往前走的路，就是值得走的路。
+            </p>
+        </div>
+
+        <div class="future-line"></div>
+        <p class="future-meta">华西综合科技运用与研究中心 · 2026</p>
+    </div>
+</div>
+
+
+<!-- ============================================================
+样式
+============================================================ -->
+<style>
+    .future-fullscreen {
+        position: relative;
+        width: 100%;
+        min-height: 560px;
+        border-radius: 16px;
+        overflow: hidden;
+        background-image: url('images/slide5.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #2a2a2a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 40px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .future-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.38);
+        border-radius: 16px;
+        pointer-events: none;
+    }
+
+    .future-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: #fff;
+        max-width: 720px;
+        opacity: 0;
+        transform: translateY(30px);
+        will-change: opacity, transform;
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .future-content.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .future-icon {
+        font-size: 36px;
+        font-weight: 300;
+        opacity: 0.6;
+        margin-bottom: 8px;
+        letter-spacing: 4px;
+    }
+
+    .future-title {
+        font-size: 42px;
+        font-weight: 700;
+        letter-spacing: 6px;
+        margin-bottom: 18px;
+        text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .future-quote-group {
+        margin-bottom: 16px;
+    }
+
+    .future-quote {
+        font-size: 15px;
+        font-style: italic;
+        letter-spacing: 1px;
+        opacity: 0.78;
+        line-height: 1.9;
+        font-family: 'Times New Roman', serif;
+        margin: 0;
+    }
+
+    .future-line {
+        width: 50px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 18px auto;
+    }
+
+    .future-outlook {
+        font-size: 15px;
+        font-weight: 300;
+        letter-spacing: 0.8px;
+        line-height: 1.9;
+        opacity: 0.85;
+        margin-bottom: 6px;
+    }
+
+    .future-outlook p {
+        margin: 0;
+    }
+
+    .future-meta {
+        font-size: 13px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        opacity: 0.5;
+        margin-top: 4px;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 768px) {
+        .future-fullscreen {
+            min-height: 440px;
+            padding: 40px 24px;
+        }
+
+        .future-title {
+            font-size: 30px;
+            letter-spacing: 4px;
+        }
+
+        .future-quote {
+            font-size: 14px;
+        }
+
+        .future-outlook {
+            font-size: 14px;
+        }
+
+        .future-icon {
+            font-size: 28px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .future-fullscreen {
+            min-height: 380px;
+            padding: 30px 16px;
+        }
+
+        .future-title {
+            font-size: 24px;
+            letter-spacing: 3px;
+        }
+
+        .future-quote {
+            font-size: 13px;
+        }
+
+        .future-outlook {
+            font-size: 13px;
+        }
+
+        .future-icon {
+            font-size: 24px;
+        }
+    }
+</style>
+
+
+<!-- ============================================================
+GSAP 淡入动画（时间拉长）
+============================================================ -->
+<script>
+    (function() {
+        function initAnimation() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                setTimeout(initAnimation, 200);
+                return;
+            }
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            var el = document.querySelector('#futureBoard .future-content');
+            if (!el) return;
+
+            gsap.set(el, { opacity: 0, y: 30 });
+
+            gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 1.6,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 88%',
+                    toggleActions: 'play none none none',
+                    once: true
+                }
+            });
+
+            ScrollTrigger.refresh();
+        }
+
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            initAnimation();
+        } else {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(initAnimation, 300);
+            });
+        }
+    })();
+</script>

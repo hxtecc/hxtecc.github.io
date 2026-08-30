@@ -1,0 +1,435 @@
+<!-- ============================================================
+pages/video.html —— 视频品牌
+成都华西小蛇制片厂 · 2025蛇年成立 · 致敬《疯狂动物城2》Gary Gray
+看板风格 · 去AI化 · GSAP淡入
+============================================================ -->
+
+<div class="notice-board" id="videoBoard">
+    <div class="board-inner">
+
+        <!-- ===== 看板顶部：品牌标识 ===== -->
+        <div class="board-header" data-animate>
+            <div class="board-avatar">
+                <img src="images/video_avatar.jpg" alt="成都华西小蛇制片厂" />
+            </div>
+            <div class="board-title">
+                <div class="brand-wrapper" id="brandWrapper">
+                    <span class="brand-abbr" style="font-size:24px;letter-spacing:2px;">🐍 CHGFS</span>
+                    <span class="brand-full" style="font-size:24px;letter-spacing:1px;">
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial" style="font-size:24px;">C</span>
+                            <span class="brand-full-rest" style="font-size:12px;">hengdu</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial" style="font-size:24px;">H</span>
+                            <span class="brand-full-rest" style="font-size:12px;">uaxi</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial" style="font-size:24px;">G</span>
+                            <span class="brand-full-rest" style="font-size:12px;">ary</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial" style="font-size:24px;">F</span>
+                            <span class="brand-full-rest" style="font-size:12px;">ilm</span>
+                        </span>
+                        <span class="brand-full-item">
+                            <span class="brand-full-initial" style="font-size:24px;">S</span>
+                            <span class="brand-full-rest" style="font-size:12px;">tudio</span>
+                        </span>
+                    </span>
+                </div>
+                <div class="board-sub">成都华西小蛇制片厂 · 视频品牌</div>
+                <div class="board-sub-en">Chengdu Huaxi Gary Film Studio</div>
+            </div>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 品牌简介 ===== -->
+        <div class="board-intro" data-animate>
+            <p><strong>成都华西小蛇制片厂</strong> 成立于 <strong>2025 年</strong>，那年正好是蛇年。</p>
+            <p>名字灵感来源于《疯狂动物城 2》中的角色 <strong>Gary Gray</strong>——取“Gray”做字母调整，变成了 <strong>Gary</strong>，以此致敬。</p>
+            <p>英文全称：<strong>Chengdu Huaxi Gary Film Studio</strong>，缩写 <strong>CHGFS</strong>。</p>
+            <p style="margin-top:10px;color:#888;font-size:13px;">“名字带蛇，但活儿正经。”</p>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 核心经历 ===== -->
+        <div class="board-intro" data-animate>
+            <p><strong>🎬 从初中开始剪视频</strong></p>
+            <p>从素材堆砌到完整成片，一步一步摸索着前进。</p>
+            <p>作品获得过 <strong>校级一等奖</strong>，第一次体会到“把想法变成作品”的成就感。</p>
+            <p>后来陆续做了很多视频，包括：</p>
+            <ul>
+                <li>🎬 晚会视频</li>
+                <li>🎆 元旦晚会表演视频</li>
+                <li>📢 宣传视频</li>
+                <li>🎤 演讲视频</li>
+                <li>🎓 毕业视频</li>
+            </ul>
+            <p class="intro-end">—— 剪过各种乱七八糟的东西，但每一次都在进步。</p>
+        </div>
+
+        <!-- ===== 分割线 ===== -->
+        <div class="board-divider">· · · · · · · · · ·</div>
+
+        <!-- ===== 致敬看板：《疯狂动物城 2》 ===== -->
+        <div class="board-tribute" data-animate>
+            <div class="tribute-label">🎬 致敬 · Gary Gray</div>
+            <div class="tribute-image">
+                <img src="images/zootopia2_poster.jpg" alt="疯狂动物城2 看板图" />
+            </div>
+            <div class="tribute-caption">
+                <span>《疯狂动物城 2》· Gary Gray</span>
+                <span style="font-size:12px;color:#999;">从角色到名字，致敬一部好电影</span>
+            </div>
+        </div>
+
+        <!-- ===== 底部收尾 ===== -->
+        <div class="board-footer" data-animate>
+            <p style="font-size:14px;color:#888;text-align:center;letter-spacing:1px;">
+                用画面记录生活，用镜头讲述故事
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ============================================================
+样式
+============================================================ -->
+<style>
+    .notice-board {
+        background: rgba(245, 240, 233, 0.5);
+        backdrop-filter: blur(4px);
+        border-radius: 16px;
+        padding: 20px 24px 24px 24px;
+        border: 1px solid rgba(200, 190, 180, 0.3);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .board-inner {
+        background: rgba(255, 252, 248, 0.7);
+        border-radius: 12px;
+        padding: 24px 28px;
+        border: 1px solid rgba(200, 190, 180, 0.15);
+    }
+
+    .board-header,
+    .board-intro,
+    .board-tribute,
+    .board-footer {
+        opacity: 0;
+        transform: translateY(24px);
+        will-change: opacity, transform;
+    }
+
+    /* ===== 头部 ===== */
+    .board-header {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .board-avatar {
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid rgba(168, 135, 74, 0.15);
+        background: rgba(200, 190, 180, 0.1);
+    }
+
+    .board-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .board-title {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .board-sub {
+        font-size: 14px;
+        color: #666;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+    }
+
+    .board-sub-en {
+        font-size: 12px;
+        color: #999;
+        letter-spacing: 0.3px;
+        margin-top: 2px;
+        font-style: italic;
+    }
+
+    /* ===== 品牌标识 hover ===== */
+    .brand-wrapper {
+        display: inline-block;
+        cursor: default;
+        position: relative;
+        line-height: 1.2;
+    }
+
+    .brand-abbr {
+        display: inline-block;
+        font-weight: 700;
+        color: #1a1a1a;
+        transition: opacity 0.25s ease;
+    }
+
+    .brand-full {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        gap: 2px 4px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: 2px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .brand-full-item {
+        display: inline-flex;
+        align-items: baseline;
+    }
+
+    .brand-full-initial {
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .brand-full-rest {
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        color: #555;
+        margin-left: 1px;
+    }
+
+    .brand-wrapper:hover .brand-abbr {
+        opacity: 0;
+    }
+
+    .brand-wrapper:hover .brand-full {
+        opacity: 1;
+    }
+
+    /* ===== 分割线 ===== */
+    .board-divider {
+        text-align: center;
+        color: rgba(168, 135, 74, 0.25);
+        font-size: 12px;
+        letter-spacing: 4px;
+        padding: 12px 0 10px 0;
+        user-select: none;
+        font-family: 'Times New Roman', serif;
+    }
+
+    /* ===== 简介 / 经历 ===== */
+    .board-intro {
+        font-size: 14px;
+        line-height: 1.9;
+        color: #2a2a2a;
+        padding: 0 0 2px 0;
+    }
+
+    .board-intro p {
+        margin-bottom: 6px;
+    }
+
+    .board-intro ul {
+        margin: 6px 0 10px 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .board-intro ul li {
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .board-intro ul li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: #a8874a;
+        opacity: 0.5;
+    }
+
+    .intro-end {
+        color: #a8874a;
+        font-weight: 500;
+        margin-top: 6px;
+        letter-spacing: 0.5px;
+    }
+
+    /* ===== 致敬看板 ===== */
+    .board-tribute {
+        padding: 4px 0 2px 0;
+    }
+
+    .tribute-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #a8874a;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    .tribute-image {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(200, 190, 180, 0.15);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        background: rgba(200, 190, 180, 0.05);
+        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    .tribute-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .tribute-caption {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        margin-top: 10px;
+        font-size: 13px;
+        color: #555;
+        letter-spacing: 0.5px;
+    }
+
+    /* ===== 底部 ===== */
+    .board-footer {
+        padding-top: 6px;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 480px) {
+        .notice-board {
+            padding: 12px 14px;
+        }
+
+        .board-inner {
+            padding: 18px 16px;
+        }
+
+        .board-avatar {
+            width: 56px;
+            height: 56px;
+        }
+
+        .board-header {
+            gap: 14px;
+        }
+
+        .brand-abbr {
+            font-size: 18px !important;
+            letter-spacing: 1.5px !important;
+        }
+
+        .brand-full {
+            font-size: 18px !important;
+            letter-spacing: 1px !important;
+            gap: 1px 2px !important;
+        }
+
+        .brand-full-initial {
+            font-size: 18px !important;
+        }
+
+        .brand-full-rest {
+            font-size: 10px !important;
+        }
+
+        .board-sub {
+            font-size: 13px;
+        }
+
+        .board-sub-en {
+            font-size: 11px;
+        }
+
+        .board-intro {
+            font-size: 13px;
+        }
+
+        .board-intro ul li {
+            font-size: 13px;
+        }
+    }
+</style>
+
+
+<!-- ============================================================
+GSAP 淡入动画
+============================================================ -->
+<script>
+    (function() {
+        function initAnimation() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                setTimeout(initAnimation, 200);
+                return;
+            }
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            var elements = document.querySelectorAll('#videoBoard [data-animate]');
+            if (!elements.length) return;
+
+            gsap.set(elements, { opacity: 0, y: 24 });
+
+            elements.forEach(function(el, index) {
+                gsap.to(el, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    delay: index * 0.12,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 92%',
+                        toggleActions: 'play none none none',
+                        once: true
+                    }
+                });
+            });
+
+            ScrollTrigger.refresh();
+        }
+
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            initAnimation();
+        } else {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(initAnimation, 300);
+            });
+        }
+    })();
+</script>
